@@ -1,0 +1,14 @@
+<nav class="navbar bg-success">
+  <h1>
+    <a [routerLink]="['/admin', 'dashboard']">Todo Admin</a>
+  </h1>
+  <ul>
+    <li routerLinkActive="active"><a [routerLink]="['/admin', 'dashboard']">Main</a></li>
+    <li routerLinkActive="active"><a [routerLink]="['/admin', 'add']">Add Todo</a></li>
+    <li><a href="#" (click)="logout($event)">Exit</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

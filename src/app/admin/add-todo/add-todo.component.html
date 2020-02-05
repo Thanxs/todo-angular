@@ -1,0 +1,37 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <h1>Adding new Todo Task</h1>
+
+  <div
+    class="form-control"
+    [ngClass]="{invalid: form.get('title').touched && form.get('title').invalid}"
+  >
+    <label for="title">Todo Title</label>
+    <input formControlName="title" type="text" id="title">
+    <div *ngIf="form.get('title').touched && form.get('title').invalid"
+         class="validation">
+      <small
+        *ngIf="form.get('title').errors.required"
+      >This field can't be empty</small>
+    </div>
+  </div>
+
+  <div
+    class="form-control"
+    [ngClass]="{invalid: form.get('user').touched && form.get('user').invalid}"
+  >
+    <label for="title">Author</label>
+    <input formControlName="user" type="text" id="user">
+    <div *ngIf="form.get('user').touched && form.get('user').invalid"
+         class="validation">
+      <small
+        *ngIf="form.get('user').errors.required"
+      >This field can't be empty</small>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-block btn-success">
+    Add Todo
+  </button>
+
+</form>
+

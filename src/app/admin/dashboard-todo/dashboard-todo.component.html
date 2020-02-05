@@ -1,0 +1,61 @@
+<div class="container">
+  <h1 class="todo-title">Todo List</h1>
+  <div class="form-control">
+    <input type="text" placeholder="Type to search..." [(ngModel)]="searchTodo">
+  </div>
+  <div>
+    <ul *ngIf="!loading; else loadingBlock">
+      <div *ngIf="todos.length; else noTodos">
+        <div class="tasks btn-dark">
+          <div
+            class="todo-name">
+            #
+          </div>
+          <div class="priority priority-title">
+            <span
+              (click)="sortByPriority()"
+            >Priority &nbsp;</span>
+          </div>
+          <div>Actions</div>
+        </div>
+        <li class="todo-task" *ngFor="let todo of todos | searchTodo: searchTodo; let idx = index">
+          <h2 class="todo-name">
+            <span>{{idx+1}})</span>
+            <span [class.complete]="todo.checked"> {{ todo.value}}</span>
+          </h2>
+          <div class="priority">
+            <button
+              [disabled]="!todo.isRequestSent"
+              class="btn-dark btn" (click)="IncreasePriority(todo, todo._id)">+</button>
+            <button
+              [disabled]="!todo.isRequestSent"
+              class="btn-dark btn" (click)="DecreasePriority(todo, todo._id)">-</button>
+            <span> {{todo.priority}} </span>
+          </div>
+          <div>
+            <button
+              [routerLink]="['/admin', 'todo', todo._id, 'edit']"
+              type="button"
+              class="btn btn-edit"
+            >Edit</button>
+            <button
+              [disabled]="todo.checked"
+              type="button" class="btn btn-complete"
+              (click)=completeTodo(todo)>Complete</button>
+            <button
+              type="button"
+              class="btn badge-danger"
+              (click)="removeTodo(todo._id)"
+            >Remove</button>
+          </div>
+        </li>
+      </div>
+      <ng-template #noTodos><p class="no-todo">No todo tasks at the moment</p></ng-template>
+
+    </ul>
+  </div>
+
+  <ng-template #loadingBlock>
+    <p class="loading">Loading...</p>
+  </ng-template>
+</div>

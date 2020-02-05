@@ -1,0 +1,74 @@
+.todo-task {
+  display: flex;
+  justify-content: space-between;
+  margin: .5rem 0;
+  cursor: pointer;
+  transition: .5s all;
+  padding: .2rem;
+  border-radius: 10px;
+  &:hover {
+    background: lighten(#12be00, 50%);
+  }
+}
+
+.complete {
+  text-decoration: line-through;
+}
+
+.btn-complete {
+  background: #ff8900;
+  color: #ffffff;
+  border-radius: 6px;
+}
+
+.btn-edit {
+  background: #0081ff;
+  color: #ffffff;
+  border-radius: 6px;
+}
+
+.edit-block {
+  display: none;
+}
+
+.todo-title {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.loading {
+  font-size: 2rem;
+  font-style: italic;
+}
+
+.no-todo {
+  font-size: 2rem;
+}
+
+.tasks {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding: .7rem;
+  margin-bottom: 1rem;
+}
+
+.priority {
+  width: 200px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.todo-name {
+  width: 300px;
+  overflow: auto;
+  cursor: pointer;
+}
+
+.priority-title {
+  transform: translateX(-120px);
+}

@@ -1,0 +1,44 @@
+<form class="card" [formGroup]="form" (ngSubmit)="submit()">
+  <h2>Sign-In</h2>
+  <div class="bg-success" *ngIf="message">{{message}}</div>
+  <div
+    class="form-control"
+    [ngClass]="{invalid: form.get('email').touched && form.get('email').invalid}"
+  >
+    <label for="email">Email</label>
+    <input formControlName="email" type="text" id="email">
+    <div *ngIf="form.get('email').touched && form.get('email').invalid"
+      class="validation">
+      <small
+        *ngIf="form.get('email').errors.required"
+      >This field can't be empty</small>
+      <small
+        *ngIf="form.get('email').errors.email"
+      >Please, enter correct email</small>
+    </div>
+  </div>
+
+  <div
+    class="form-control"
+    [ngClass]="{invalid: form.get('password').touched && form.get('password').invalid}"
+  >
+    <label for="password">Password</label>
+    <input formControlName="password" type="password" id="password">
+    <div
+      *ngIf="form.get('password').touched && form.get('password').invalid"
+      class="validation">
+      <small
+        *ngIf="form.get('password').errors.required"
+      >This field can't be empty</small>
+      <small
+        *ngIf="form.get('password').errors.minlength"
+      >Password can't be less than {{form.get('password').errors.minlength.requiredLength}} symbols.
+        You wrote {{form.get('password').errors.minlength.actualLength}}.
+      </small>
+    </div>
+  </div>
+  <button
+    class="btn btn-success"
+    [disabled]="form.invalid"
+  >Continue</button>
+</form>
